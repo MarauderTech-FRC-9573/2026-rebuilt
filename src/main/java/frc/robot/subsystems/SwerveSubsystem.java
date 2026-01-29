@@ -1,4 +1,3 @@
-// Source code is decompiled from a .class file using FernFlower decompiler.
 package frc.robot.subsystems;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -87,12 +86,12 @@ public class SwerveSubsystem extends SubsystemBase {
       return this.swerveDrive.getRobotVelocity();
    }
 
-   // public void setupPhotonVision() {
-   //    SwerveDrive var10002 = this.swerveDrive;
-   //    Objects.requireNonNull(var10002);
-   //    new Vision(var10002::getPose, this.swerveDrive.field);
-   //    System.out.println("Photon Vision Setup");
-   // }
+   public void setupPhotonVision() {
+      SwerveDrive var10002 = this.swerveDrive;
+      Objects.requireNonNull(var10002);
+      new Vision(var10002::getPose, this.swerveDrive.field);
+      System.out.println("Photon Vision Setup");
+   }
 
    public Command driveCommand(DoubleSupplier translationX, DoubleSupplier translationY, DoubleSupplier headingX, DoubleSupplier headingY) {
       return this.run(() -> {

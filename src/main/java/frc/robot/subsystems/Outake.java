@@ -18,7 +18,7 @@ public class Outake extends SubsystemBase {
   private final SparkMax intakeLauncherRoller;
 
   /** Creates a new CANBallSubsystem. */
-  public Outake() {
+public Outake() {
     // create brushed motors for each of the motors on the launcher mechanism
     intakeLauncherRoller = new SparkMax(INTAKE_LAUNCHER_MOTOR_ID, MotorType.kBrushed);
     feederRoller = new SparkMax(FEEDER_MOTOR_ID, MotorType.kBrushed);
