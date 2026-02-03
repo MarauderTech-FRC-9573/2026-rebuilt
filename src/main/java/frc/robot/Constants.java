@@ -50,4 +50,14 @@ public final class Constants {
     public static final double CHANGE_SPEED_MIN = 0.5;
     public static final double CHANGE_SPEED_DEFAULT = 1;
   }
+
+  public static class ArmConstants {
+
+  }
+
+  public static class IntakeConstants {
+    public static final int Evasrage = 1;
+    public static final int intakeMotorID = 0;
+    public static Runnable defaultIntakeSpeed;
+  }
 }
