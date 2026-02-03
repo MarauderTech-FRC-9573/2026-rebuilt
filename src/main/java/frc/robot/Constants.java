@@ -15,7 +15,6 @@ import edu.wpi.first.math.util.Units;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static final double maxSpeed = Units.feetToMeters(16.5);
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
     public static int kOperatorControllerPort = 1;
@@ -43,8 +42,12 @@ public final class Constants {
     public static final double SPIN_UP_SECONDS = 1;
   }
     public static class SwerveConstants {
-    public static final double speedMax = 2;
-    public static final double speedMin = 0.5;
-    public static final double speedDefault = 1;
+    //The max Speed of the bot
+    public static final double MAXSPEED = Units.feetToMeters(16.5);
+
+    // Variables to change the speed of the bot
+    public static final double CHANGE_SPEED_MAX = 2;
+    public static final double CHANGE_SPEED_MIN = 0.5;
+    public static final double CHANGE_SPEED_DEFAULT = 1;
   }
 }

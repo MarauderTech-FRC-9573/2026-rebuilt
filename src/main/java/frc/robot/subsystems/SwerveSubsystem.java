@@ -45,7 +45,7 @@ public class SwerveSubsystem extends SubsystemBase {
       try {
          boolean blueAlliance = DriverStation.getAlliance().get() == Alliance.Blue;
          Pose2d startingPose = blueAlliance ? new Pose2d(new Translation2d(Units.Meter.of(1.0), Units.Meter.of(4.0)), Rotation2d.fromDegrees(0.0)) : new Pose2d(new Translation2d(Units.Meter.of(16.0), Units.Meter.of(4.0)), Rotation2d.fromDegrees(180.0));
-         this.swerveDrive = (new SwerveParser(this.directory)).createSwerveDrive(Constants.SwerveConstants.speedMax, startingPose);
+         this.swerveDrive = (new SwerveParser(this.directory)).createSwerveDrive(Constants.SwerveConstants.MAXSPEED, startingPose);
       } catch (Exception var5) {
          throw new RuntimeException(var5);
       }
@@ -105,7 +105,7 @@ public class SwerveSubsystem extends SubsystemBase {
 
    public double changeSpeed(double newSpeed) {
       this.translationSpeed = newSpeed;
-      return newSpeed;
+      return translationSpeed;
    }
 
    public void getIMU() {
