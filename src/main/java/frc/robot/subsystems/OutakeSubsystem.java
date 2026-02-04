@@ -13,12 +13,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import static frc.robot.Constants.FuelConstants.*;
 
-public class Outake extends SubsystemBase {
+public class OutakeSubsystem extends SubsystemBase {
   private final SparkMax feederRoller;
   private final SparkMax intakeLauncherRoller;
 
   /** Creates a new CANBallSubsystem. */
-public Outake() {
+public OutakeSubsystem() {
     // create brushed motors for each of the motors on the launcher mechanism
     intakeLauncherRoller = new SparkMax(INTAKE_LAUNCHER_MOTOR_ID, MotorType.kBrushed);
     feederRoller = new SparkMax(FEEDER_MOTOR_ID, MotorType.kBrushed);

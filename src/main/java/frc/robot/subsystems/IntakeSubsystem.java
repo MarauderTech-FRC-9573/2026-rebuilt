@@ -5,11 +5,11 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
 
-public class Intake extends SubsystemBase{
+public class IntakeSubsystem extends SubsystemBase{
 //Kraken aka talonFX
     private final TalonFX intakeMotor;
 
-    public Intake() {
+    public IntakeSubsystem() {
         intakeMotor = new TalonFX(IntakeConstants.intakeMotorID); 
     }
 
