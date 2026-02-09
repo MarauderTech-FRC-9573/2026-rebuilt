@@ -10,7 +10,7 @@ public class IntakeSubsystem extends SubsystemBase{
     private final TalonFX intakeMotor;
 
     public IntakeSubsystem() {
-        intakeMotor = new TalonFX(IntakeConstants.intakeMotorID); 
+        intakeMotor = new TalonFX(IntakeConstants.INTAKE_MOTOR_ID); 
     }
 
     public void run(double speed) {
