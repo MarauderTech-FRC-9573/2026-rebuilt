@@ -43,7 +43,8 @@ public class SwerveSubsystem extends SubsystemBase {
       SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
 
       try {
-         boolean blueAlliance = DriverStation.getAlliance().get() == Alliance.Blue;
+         // boolean blueAlliance = DriverStation.getAlliance().get() == Alliance.Blue;
+         boolean blueAlliance = Alliance.Blue != null;
          Pose2d startingPose = blueAlliance ? new Pose2d(new Translation2d(Units.Meter.of(1.0), Units.Meter.of(4.0)), Rotation2d.fromDegrees(0.0)) : new Pose2d(new Translation2d(Units.Meter.of(16.0), Units.Meter.of(4.0)), Rotation2d.fromDegrees(180.0));
          this.swerveDrive = (new SwerveParser(this.directory)).createSwerveDrive(Constants.SwerveConstants.MAXSPEED, startingPose);
       } catch (Exception var5) {

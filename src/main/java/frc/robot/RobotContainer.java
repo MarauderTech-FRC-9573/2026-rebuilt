@@ -4,13 +4,20 @@
 
 package frc.robot;
 
-import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.ArmSetpointControl;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.LaunchSequence;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.OutakeSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
+
+import com.pathplanner.lib.auto.NamedCommands;
+
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -28,16 +35,20 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final SwerveSubsystem drivebase = new SwerveSubsystem();
   private final OutakeSubsystem outake = new OutakeSubsystem();
-
+  private final IntakeSubsystem intake = new IntakeSubsystem();
+  private final ArmSubsystem arm = new ArmSubsystem();
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
-  private final CommandXboxController m_operatotController = 
-      new CommandXboxController(OperatorConstants.kOperatorControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     drivebase.setDefaultCommand(driveRobotOrientedAngularVelocity);
+    //TODO: CHANGE VALUES GIRL!!!!!!! DO NOT TEST!!!!!!!!
+    NamedCommands.registerCommand("Shoot", new LaunchSequence(outake));
+    NamedCommands.registerCommand("Arm Down", new ArmSetpointControl(arm, 0));
+    NamedCommands.registerCommand("Intake", new IntakeCommand(intake, 0));
+
     // Configure the trigger bindings
     configureBindings();
   }
@@ -80,17 +91,13 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    //TODO: Ask strategy people/muhammad about button bindings. Add button Bindings.
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     new Trigger(m_exampleSubsystem::exampleCondition)
         .onTrue(new ExampleCommand(m_exampleSubsystem));
 
-      
-
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    // TODO: make new RunCommand to fix this idk 
-    //m_driverController.b().whileTrue(new Command(() -> Outake.run(IntakeConstants.defaultIntakeSpeed)));
+    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
   }
 
   /**

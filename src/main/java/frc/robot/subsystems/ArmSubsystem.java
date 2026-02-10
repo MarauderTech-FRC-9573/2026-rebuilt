@@ -67,6 +67,12 @@ public ArmSubsystem(){
 
     }
 
+    
+    public void endManualControl() {
+        manualOverride = false;
+    }
+
+
     @Override
     public void periodic(){
            if (manualOverride) {
@@ -75,6 +81,7 @@ public ArmSubsystem(){
         } else {
             moveToSetpoint(targetPosition);
         }
+        
     }
 
     }
