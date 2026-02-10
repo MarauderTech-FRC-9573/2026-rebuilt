@@ -97,6 +97,17 @@
       }
     },
     {
+      "name": "Arm Down",
+      "waypointRelativePos": 1.966101694915256,
+      "endWaypointRelativePos": null,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "Arm Down"
+        }
+      }
+    },
+    {
       "name": "Intake",
       "waypointRelativePos": 2.7525423728813596,
       "endWaypointRelativePos": 3.9593220338983017,
