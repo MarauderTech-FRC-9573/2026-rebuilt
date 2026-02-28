@@ -6,16 +6,22 @@ package frc.robot;
 
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Autos;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.OutakeSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
+
+import com.pathplanner.lib.auto.AutoBuilder;
+
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import swervelib.SwerveInputStream;
+import frc.robot.commands.Launch;
+import frc.robot.commands.LaunchSequence;
+import frc.robot.commands.SpinUp;
+import frc.robot.subsystems.OutakeSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -25,9 +31,10 @@ import swervelib.SwerveInputStream;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final SwerveSubsystem drivebase = new SwerveSubsystem();
   private final OutakeSubsystem outake = new OutakeSubsystem();
+
+  private final SendableChooser<Command> autoChooser;
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
@@ -38,6 +45,8 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     drivebase.setDefaultCommand(driveRobotOrientedAngularVelocity);
+     autoChooser = AutoBuilder.buildAutoChooser("Leave Auto");
+      SmartDashboard.putData("Auto Chooser", autoChooser);
     // Configure the trigger bindings
     configureBindings();
   }
@@ -82,8 +91,10 @@ public class RobotContainer {
   private void configureBindings() {
     //TODO: Ask strategy people/muhammad about button bindings. Add button Bindings.
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    new Trigger(m_exampleSubsystem::exampleCondition)
-        .onTrue(new ExampleCommand(m_exampleSubsystem));
+     m_driverController.a().onTrue(new LaunchSequence(outake));
+    m_driverController.b().whileTrue(new SpinUp(outake));
+    m_driverController.x().whileTrue(new Launch(outake));
+  }
 
       
 
@@ -91,15 +102,16 @@ public class RobotContainer {
     // cancelling on release.
     // TODO: make new RunCommand to fix this idk 
     //m_driverController.b().whileTrue(new Command(() -> Outake.run(IntakeConstants.defaultIntakeSpeed)));
-  }
+
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
+      public Command getAutomousCommand() {
     // An example command will be run in autonomous
-    return Autos.exampleAuto(m_exampleSubsystem);
+    return autoChooser.getSelected();
   }
+  
 }
