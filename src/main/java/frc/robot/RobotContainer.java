@@ -21,7 +21,7 @@ import swervelib.SwerveInputStream;
 import frc.robot.commands.Launch;
 import frc.robot.commands.LaunchSequence;
 import frc.robot.commands.SpinUp;
-import frc.robot.subsystems.OutakeSubsystem;
+// import frc.robot.subsystems.OutakeSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -91,9 +91,9 @@ public class RobotContainer {
   private void configureBindings() {
     //TODO: Ask strategy people/muhammad about button bindings. Add button Bindings.
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-     m_driverController.a().onTrue(new LaunchSequence(outake));
-    m_driverController.b().whileTrue(new SpinUp(outake));
-    m_driverController.x().whileTrue(new Launch(outake));
+    //m_driverController.a().onTrue(new LaunchSequence(outake));
+    //m_driverController.b().whileTrue(new SpinUp(outake));
+    //m_driverController.x().whileTrue(new Launch(outake));
   }
 
       

@@ -2,7 +2,7 @@ package frc.robot.subsystems;
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
-
+/* 
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
@@ -17,7 +17,7 @@ public class OutakeSubsystem extends SubsystemBase {
   private final SparkMax feederRoller;
   private final SparkMax intakeLauncherRoller;
 
-  /** Creates a new CANBallSubsystem. */
+  /** Creates a new CANBallSubsystem. 
 public OutakeSubsystem() {
     // create brushed motors for each of the motors on the launcher mechanism
     intakeLauncherRoller = new SparkMax(LAUNCHER_MOTOR_ID, MotorType.kBrushed);
@@ -68,3 +68,4 @@ public OutakeSubsystem() {
     // This method will be called once per scheduler run
   }
 }
+*/
