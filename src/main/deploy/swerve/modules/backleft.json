@@ -11,7 +11,7 @@
   },
   "inverted": {
     "drive": true,
-    "angle": 3
+    "angle": false
   },
   "angle": {
     "type": "krakenx60",
