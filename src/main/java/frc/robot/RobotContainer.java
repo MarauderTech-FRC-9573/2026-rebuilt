@@ -6,7 +6,7 @@ package frc.robot;
 
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.subsystems.OutakeSubsystem;
+// import frc.robot.subsystems.OutakeSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -18,9 +18,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import swervelib.SwerveInputStream;
-import frc.robot.commands.Launch;
-import frc.robot.commands.LaunchSequence;
-import frc.robot.commands.SpinUp;
+// import frc.robot.commands.Launch;
+// import frc.robot.commands.LaunchSequence;
+// import frc.robot.commands.SpinUp;
 // import frc.robot.subsystems.OutakeSubsystem;
 
 /**
@@ -32,21 +32,21 @@ import frc.robot.commands.SpinUp;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem drivebase = new SwerveSubsystem();
-  private final OutakeSubsystem outake = new OutakeSubsystem();
-
-  private final SendableChooser<Command> autoChooser;
+  // private final OutakeSubsystem outake = new OutakeSubsystem();
+// 
+  // private final SendableChooser<Command> autoChooser;
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
-  private final CommandXboxController m_operatotController = 
+  private final CommandXboxController m_operatorController = 
       new CommandXboxController(OperatorConstants.kOperatorControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     drivebase.setDefaultCommand(driveRobotOrientedAngularVelocity);
-     autoChooser = AutoBuilder.buildAutoChooser("Leave Auto");
-      SmartDashboard.putData("Auto Chooser", autoChooser);
+    //  autoChooser = AutoBuilder.buildAutoChooser("Leave Auto");
+      // SmartDashboard.putData("Auto Chooser", autoChooser);
     // Configure the trigger bindings
     configureBindings();
   }
@@ -111,7 +111,10 @@ public class RobotContainer {
    */
       public Command getAutomousCommand() {
     // An example command will be run in autonomous
-    return autoChooser.getSelected();
+    // return autoChooser.getSelected();
+    return new Command() {
+      
+    };
   }
   
 }
