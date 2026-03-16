@@ -67,4 +67,6 @@ public final class Constants {
     public static final int INTAKE_MOTOR_ID = 1;
     public static Runnable defaultIntakeSpeed;
   }
+
+public static final double MAX_SPEED = 0.4;
 }
