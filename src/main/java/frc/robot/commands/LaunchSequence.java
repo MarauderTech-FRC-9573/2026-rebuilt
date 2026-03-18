@@ -15,6 +15,7 @@ import frc.robot.subsystems.OutakeSubsystem;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class LaunchSequence extends SequentialCommandGroup {
   // Creates a new LaunchSequence.
+  /** Creates a new LaunchSequence. */
   public LaunchSequence(OutakeSubsystem fuelSubsystem) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());

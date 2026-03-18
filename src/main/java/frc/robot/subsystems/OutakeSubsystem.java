@@ -17,10 +17,12 @@ public class OutakeSubsystem extends SubsystemBase {
   private final SparkMax feederRoller;
   private final SparkMax intakeLauncherRoller;
 
+
   //Creates a new CANBallSubsystem. 
 public OutakeSubsystem() {
     // create brushed motors for each of the motors on the launcher mechanism
     intakeLauncherRoller = new SparkMax(LAUNCHER_MOTOR_ID, MotorType.kBrushed);
+
     feederRoller = new SparkMax(FEEDER_MOTOR_ID, MotorType.kBrushed);
 
     // create the configuration for the feeder roller, set a current limit and apply
@@ -41,7 +43,8 @@ public OutakeSubsystem() {
     // all commands using this subsystem pull values from the dashbaord to allow
     // you to tune the values easily, and then replace the values in Constants.java
     // with your new values. For more information, see the Software Guide.
-
+    SmartDashboard.putNumber("Intaking feeder roller value", INTAKING_FEEDER_VOLTAGE);
+    SmartDashboard.putNumber("Intaking intake roller value", INTAKING_INTAKE_VOLTAGE);
     SmartDashboard.putNumber("Launching feeder roller value", LAUNCHING_FEEDER_VOLTAGE);
     SmartDashboard.putNumber("Launching launcher roller value", LAUNCHING_LAUNCHER_VOLTAGE);
     SmartDashboard.putNumber("Spin-up feeder roller value", SPIN_UP_FEEDER_VOLTAGE);
@@ -68,4 +71,3 @@ public OutakeSubsystem() {
     // This method will be called once per scheduler run
   }
 }
-
