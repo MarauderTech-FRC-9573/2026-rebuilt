@@ -1,27 +1,5 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix6.hardware.TalonFX;
+public class IntakeSubsystem {
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.IntakeConstants;
-
-public class IntakeSubsystem extends SubsystemBase{
-//Kraken aka talonFX
-    private final TalonFX intakeMotor;
-
-    public IntakeSubsystem() {
-        intakeMotor = new TalonFX(IntakeConstants.INTAKE_MOTOR_ID); 
-    }
-
-    public void run(double speed) {
-        intakeMotor.set(speed);
-
-    }
-
-    @Override
-    public void periodic() { 
-        // This method will be called once per scheduler run 
-        
-
-    }
 }
