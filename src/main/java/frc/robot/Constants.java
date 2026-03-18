@@ -28,16 +28,12 @@ public final class Constants {
     public static final int LAUNCHER_MOTOR_ID = 15;
 
     // Current limit and nominal voltage for fuel mechanism motors.
-    public static final int FEEDER_MOTOR_CURRENT_LIMIT = 40;
-    public static final int LAUNCHER_MOTOR_CURRENT_LIMIT = 40;
+    public static final int FEEDER_MOTOR_CURRENT_LIMIT = 50;
+    public static final int LAUNCHER_MOTOR_CURRENT_LIMIT = 50;
 
-    // Voltage values for various fuel operations. These values may need to be tuned
-    // based on exact robot construction.
-    // See the Software Guide for tuning information
-    public static final double LAUNCHING_FEEDER_VOLTAGE = 9;
-    public static final double LAUNCHING_LAUNCHER_VOLTAGE = 10.6;
-    public static final double SPIN_UP_FEEDER_VOLTAGE = -6;
-    public static final double SPIN_UP_SECONDS = 1;
+    // Speed for feeder and shooter
+    public static final double FEEDER_MOTOR_SPEED = 0.5;
+    public static final double SHOOTER_MOTOR_SPEED = 0.5;
   }
     public static class SwerveConstants {
     //The max Speed of the bot

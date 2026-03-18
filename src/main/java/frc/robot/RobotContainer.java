@@ -22,11 +22,15 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Launch;
-import frc.robot.commands.LaunchSequence;
-import frc.robot.commands.SpinUp;
-import frc.robot.subsystems.OutakeSubsystem;
+import frc.robot.commands.FeedFuel;
+import frc.robot.commands.ShootFuel;
+import frc.robot.subsystems.FeederSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
+
+import static frc.robot.Constants.FuelConstants.FEEDER_MOTOR_SPEED;
+import static frc.robot.Constants.FuelConstants.SHOOTER_MOTOR_SPEED;
+
 import java.io.File;
 import swervelib.SwerveInputStream;
 // import frc.robot.commands.LaunchSequence;
@@ -47,7 +51,8 @@ public class RobotContainer
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem       drivebase  = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                                 "swerve"));
-  private final OutakeSubsystem outake = new OutakeSubsystem();
+  private final FeederSubsystem feeder = new FeederSubsystem();
+  private final ShooterSubsystem shooter = new ShooterSubsystem();
 
   // Establish a Sendable Chooser that will be able to be sent to the SmartDashboard, allowing selection of desired auto
   private final SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -139,10 +144,15 @@ public class RobotContainer
   private void configureBindings()
   {
 
-  
-    m_operatorController.a().onTrue(new LaunchSequence(outake));
-    m_operatorController.b().whileTrue(new SpinUp(outake));
-    m_operatorController.x().whileTrue(new Launch(outake));
+    //Runs feeder 
+    m_operatorController.a().whileTrue(new FeedFuel(feeder, FEEDER_MOTOR_SPEED));
+
+    //Runs Shooter (orange roller)
+    m_operatorController.b().whileTrue(new ShootFuel(shooter, SHOOTER_MOTOR_SPEED));
+
+    //Runs feeder and Shooter simustaneouly 
+    m_operatorController.x().whileTrue(new FeedFuel(feeder, FEEDER_MOTOR_SPEED)
+                                      .alongWith(new ShootFuel(shooter, SHOOTER_MOTOR_SPEED)));
 
 
     Command driveFieldOrientedDirectAngle      = drivebase.driveFieldOriented(driveDirectAngle);
