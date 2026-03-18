@@ -8,10 +8,13 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.FuelConstants;
 import frc.robot.subsystems.OutakeSubsystem;
 
+//TODO: Write this whole class as a command line in RobotContainer()
+
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class LaunchSequence extends SequentialCommandGroup {
+  // Creates a new LaunchSequence.
   /** Creates a new LaunchSequence. */
   public LaunchSequence(OutakeSubsystem fuelSubsystem) {
     // Add your commands in the addCommands() call, e.g.

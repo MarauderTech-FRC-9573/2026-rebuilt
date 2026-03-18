@@ -24,18 +24,16 @@ public final class Constants {
    public static final class FuelConstants {
     //TODO: Change the motor IDs and actually test voltages.
     // Motor controller IDs for Fuel Mechanism motors
-    public static final int FEEDER_MOTOR_ID = 6;
-    public static final int INTAKE_LAUNCHER_MOTOR_ID = 5;
+    public static final int FEEDER_MOTOR_ID = 14;
+    public static final int LAUNCHER_MOTOR_ID = 15;
 
     // Current limit and nominal voltage for fuel mechanism motors.
-    public static final int FEEDER_MOTOR_CURRENT_LIMIT = 60;
-    public static final int LAUNCHER_MOTOR_CURRENT_LIMIT = 60;
+    public static final int FEEDER_MOTOR_CURRENT_LIMIT = 40;
+    public static final int LAUNCHER_MOTOR_CURRENT_LIMIT = 40;
 
     // Voltage values for various fuel operations. These values may need to be tuned
     // based on exact robot construction.
     // See the Software Guide for tuning information
-    public static final double INTAKING_FEEDER_VOLTAGE = -12;
-    public static final double INTAKING_INTAKE_VOLTAGE = 10;
     public static final double LAUNCHING_FEEDER_VOLTAGE = 9;
     public static final double LAUNCHING_LAUNCHER_VOLTAGE = 10.6;
     public static final double SPIN_UP_FEEDER_VOLTAGE = -6;
@@ -50,4 +48,23 @@ public final class Constants {
     public static final double CHANGE_SPEED_MIN = 0.5;
     public static final double CHANGE_SPEED_DEFAULT = 1;
   }
+
+  public static class ArmConstants {
+    public static final int ARM_MOTOR_ID = 0;
+
+    public static final double ARM_P = 0.5;
+    public static final double ARM_I = 0;
+    public static final double ARM_D = 0;
+
+    public static final int ARM_MAX_CURRENT = 0;
+
+     public static final double ARM_MAX_SPEED = 0;
+  }
+
+  public static class IntakeConstants {
+    public static final int INTAKE_MOTOR_ID = 0;
+    public static Runnable defaultIntakeSpeed;
+  }
+
+public static final double MAX_SPEED = 0.5;
 }
