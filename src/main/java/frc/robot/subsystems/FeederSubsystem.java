@@ -21,6 +21,7 @@ public class FeederSubsystem extends SubsystemBase {
         //config for the feeder motor
         SparkMaxConfig feederConfig = new SparkMaxConfig();
         feederConfig.smartCurrentLimit(FEEDER_MOTOR_CURRENT_LIMIT);
+        feederConfig.inverted(true);
 
         feederMotor.configure(feederConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }

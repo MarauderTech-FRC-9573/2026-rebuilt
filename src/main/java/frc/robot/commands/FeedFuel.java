@@ -9,16 +9,14 @@ public class FeedFuel extends Command{
     private double speed;
 
     public FeedFuel(FeederSubsystem feeder2, double feederMotorSpeed) {
-        //TODO Auto-generated constructor stub
-    }
-
-    public void Shoot(FeederSubsystem feeder, double speed){
         
+
+        this.feeder = feeder2;
+        this.speed = feederMotorSpeed;
+
         addRequirements(feeder);
 
-        feeder = this.feeder;
-        speed = this.speed;
-    }
+    }    
 
     @Override
     public void execute() {

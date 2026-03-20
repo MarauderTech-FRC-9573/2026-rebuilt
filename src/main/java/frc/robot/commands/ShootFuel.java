@@ -7,20 +7,15 @@ public class ShootFuel extends Command{
     private ShooterSubsystem shooter;
     private double speed;
 
-    public ShootFuel(ShooterSubsystem shooter2, double shooterMotorSpeed) {
-        //TODO Auto-generated constructor stub
+    public ShootFuel(ShooterSubsystem shooter, double speed) {
+        this.shooter = shooter;
+        this.speed = speed;  
+        addRequirements(shooter);  
     }
-
-    public void Shoot(ShooterSubsystem shooter, double speed){
-        addRequirements(shooter);
-
-        shooter = this.shooter;
-        speed = this.speed;
-        }
 
     @Override
     public void execute() {
-        shooter.setShooter(speed);
+        shooter.run(speed);
     }
 
     @Override

@@ -1,42 +1,27 @@
 package frc.robot.subsystems;
 
-import com.revrobotics.spark.SparkMax;
-import com.revrobotics.spark.config.SparkMaxConfig;
+import static frc.robot.Constants.FuelConstants.LAUNCHER_MOTOR_ID;
 
-import static frc.robot.Constants.FuelConstants.*;
-
-import com.revrobotics.PersistMode;
-import com.revrobotics.ResetMode;
-import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class ShooterSubsystem extends SubsystemBase{
+public class ShooterSubsystem extends SubsystemBase {
     
-    private final SparkMax shooterMotor;
+    private TalonFX intake;
 
-    public ShooterSubsystem(){
-        
-        shooterMotor = new SparkMax(FEEDER_MOTOR_ID, MotorType.kBrushless);
 
-        //config for the shooter motor
-        SparkMaxConfig shootConfig = new SparkMaxConfig();
-        shootConfig.smartCurrentLimit(LAUNCHER_MOTOR_CURRENT_LIMIT);
-
-        shooterMotor.configure(shootConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    public ShooterSubsystem() {
+        intake = new TalonFX(LAUNCHER_MOTOR_ID);
     }
 
-    /*
-     * Runs the motor at specified speed between -1 and 1
-     * @param   speed   the speed the motor will be set to run at
-    */
-    public void setShooter(double speed ){
-        shooterMotor.set(speed);
-    }
+    public void run(double speed) {
+            intake.set(speed);
+}
 
-    //Stops the shooter motor
-    public void stop(){
-        shooterMotor.set(0);
+
+    public void stop() {
+        intake.set(0);
     }
 
 }

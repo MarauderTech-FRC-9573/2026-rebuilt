@@ -18,18 +18,26 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.ArmManualControl;
 import frc.robot.commands.FeedFuel;
+import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShootFuel;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.FeederSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 
 import static frc.robot.Constants.FuelConstants.FEEDER_MOTOR_SPEED;
 import static frc.robot.Constants.FuelConstants.SHOOTER_MOTOR_SPEED;
+import static frc.robot.Constants.IntakeConstants.INTAKE_SPEED;
+import static frc.robot.Constants.ArmConstants.ARM_MAX_SPEED;
 
 import java.io.File;
 import swervelib.SwerveInputStream;
@@ -53,6 +61,8 @@ public class RobotContainer
                                                                                 "swerve"));
   private final FeederSubsystem feeder = new FeederSubsystem();
   private final ShooterSubsystem shooter = new ShooterSubsystem();
+  private final IntakeSubsystem intake = new IntakeSubsystem();
+  private final ArmSubsystem arm = new ArmSubsystem();
 
   // Establish a Sendable Chooser that will be able to be sent to the SmartDashboard, allowing selection of desired auto
   private final SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -153,6 +163,11 @@ public class RobotContainer
     //Runs feeder and Shooter simustaneouly 
     m_operatorController.x().whileTrue(new FeedFuel(feeder, FEEDER_MOTOR_SPEED)
                                       .alongWith(new ShootFuel(shooter, SHOOTER_MOTOR_SPEED)));
+
+    m_operatorController.y().whileTrue(new IntakeCommand(intake, INTAKE_SPEED));
+
+    m_operatorController.rightTrigger().whileTrue(new ArmManualControl(arm, ARM_MAX_SPEED));
+    m_operatorController.leftTrigger().whileTrue(new ArmManualControl(arm, -ARM_MAX_SPEED));
 
 
     Command driveFieldOrientedDirectAngle      = drivebase.driveFieldOriented(driveDirectAngle);

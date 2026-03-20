@@ -24,20 +24,20 @@ public final class Constants {
    public static final class FuelConstants {
     //TODO: Change the motor IDs and actually test voltages.
     // Motor controller IDs for Fuel Mechanism motors
-    public static final int FEEDER_MOTOR_ID = 14;
-    public static final int LAUNCHER_MOTOR_ID = 15;
+    public static final int FEEDER_MOTOR_ID = 15;
+    public static final int LAUNCHER_MOTOR_ID = 17;
 
     // Current limit and nominal voltage for fuel mechanism motors.
-    public static final int FEEDER_MOTOR_CURRENT_LIMIT = 50;
-    public static final int LAUNCHER_MOTOR_CURRENT_LIMIT = 50;
+    public static final int FEEDER_MOTOR_CURRENT_LIMIT = 60;
+    public static final int LAUNCHER_MOTOR_CURRENT_LIMIT = 60;
 
     // Speed for feeder and shooter
-    public static final double FEEDER_MOTOR_SPEED = 0.5;
-    public static final double SHOOTER_MOTOR_SPEED = 0.5;
+    public static final double FEEDER_MOTOR_SPEED = 0.6;
+    public static final double SHOOTER_MOTOR_SPEED = 0.8;
   }
     public static class SwerveConstants {
     //The max Speed of the bot
-    public static final double MAXSPEED = Units.feetToMeters(16.5);
+    public static final double MAXSPEED = Units.feetToMeters(6.5);
 
     // Variables to change the speed of the bot
     public static final double CHANGE_SPEED_MAX = 2;
@@ -46,21 +46,21 @@ public final class Constants {
   }
 
   public static class ArmConstants {
-    public static final int ARM_MOTOR_ID = 0;
+    public static final int ARM_MOTOR_ID = 16;
 
     public static final double ARM_P = 0.5;
     public static final double ARM_I = 0;
     public static final double ARM_D = 0;
 
-    public static final int ARM_MAX_CURRENT = 0;
+    public static final int ARM_MAX_CURRENT = 60;
 
-     public static final double ARM_MAX_SPEED = 0;
+     public static final double ARM_MAX_SPEED = 0.1;
   }
 
   public static class IntakeConstants {
-    public static final int INTAKE_MOTOR_ID = 0;
-    public static Runnable defaultIntakeSpeed;
+    public static final int INTAKE_MOTOR_ID = 14;
+    public static final double INTAKE_SPEED = 0.6;
   }
 
-public static final double MAX_SPEED = 0.5;
+public static final double MAX_SPEED = Units.feetToMeters(6.5);
 }
