@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -130,8 +131,10 @@ public class RobotContainer
     DriverStation.silenceJoystickConnectionWarning(true);
 
     //Set the default auto (do nothing) 
-    autoChooser.setDefaultOption("Do Nothing", Commands.runOnce(drivebase::zeroGyroWithAlliance)
+    autoChooser.addOption("Do Nothing", Commands.runOnce(drivebase::zeroGyroWithAlliance)
                                                     .andThen(Commands.none()));
+                                    
+    autoChooser.setDefaultOption("Shoot", new RunCommand(() -> new ShootFuel(shooter, SHOOTER_MOTOR_SPEED)).withTimeout(6));
 
     //Add a simple auto option to have the robot drive forward for 1 second then stop
     autoChooser.addOption("Drive Forward", Commands.runOnce(drivebase::zeroGyroWithAlliance).withTimeout(.2)
