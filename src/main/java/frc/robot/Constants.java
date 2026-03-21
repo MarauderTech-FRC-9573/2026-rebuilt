@@ -33,11 +33,11 @@ public final class Constants {
 
     // Speed for feeder and shooter
     public static final double FEEDER_MOTOR_SPEED = 0.6;
-    public static final double SHOOTER_MOTOR_SPEED = 0.4;
+    public static final double SHOOTER_MOTOR_SPEED = 0.7;
   }
     public static class SwerveConstants {
     //The max Speed of the bot
-    public static final double MAXSPEED = Units.feetToMeters(6.5);
+    public static final double MAXSPEED = Units.feetToMeters(16.5);
 
     // Variables to change the speed of the bot
     public static final double CHANGE_SPEED_MAX = 2;
@@ -62,5 +62,5 @@ public final class Constants {
     public static final double INTAKE_SPEED = 0.6;
   }
 
-public static final double MAX_SPEED = Units.feetToMeters(6.5);
+public static final double MAX_SPEED = Units.feetToMeters(16.5);
 }

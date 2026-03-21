@@ -49,10 +49,7 @@ public ArmSubsystem(){
     }
 
     public void manualControl(double speed) {
-        manualOverride = true;
-        manualSpeed = MathUtil.clamp(speed, -Constants.ArmConstants.ARM_MAX_SPEED,
-                       Constants.ArmConstants.ARM_MAX_SPEED);
-        targetPosition = getCurrentPosition();
+        arm.set(0.2);
     }
     
     public boolean atSetpoint() {

@@ -9,6 +9,7 @@ import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -171,6 +172,10 @@ public class RobotContainer
 
     m_operatorController.rightTrigger().whileTrue(new ArmManualControl(arm, ARM_MAX_SPEED));
     m_operatorController.leftTrigger().whileTrue(new ArmManualControl(arm, -ARM_MAX_SPEED));
+
+    //Swerve setpoint test for angle motor 
+    // m_driverController.povDown().whileTrue(new RunCommand(() -> {drivebase.swerveDrive.getModules()[0].setDesiredState(new SwerveModuleState(1, new Rotation2d(Math.PI)), true, true)});
+    m_driverController.povDown().whileTrue(new RunCommand(() -> drivebase.swerveDrive.getModules()[1].setDesiredState(new SwerveModuleState(1, new Rotation2d(Math.PI/4)), false, true), drivebase));
 
 
     Command driveFieldOrientedDirectAngle      = drivebase.driveFieldOriented(driveDirectAngle);
