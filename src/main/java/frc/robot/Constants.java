@@ -54,7 +54,7 @@ public final class Constants {
 
     public static final int ARM_MAX_CURRENT = 60;
 
-     public static final double ARM_MAX_SPEED = 0.1;
+     public static final double ARM_MAX_SPEED = 0.5;
   }
 
   public static class IntakeConstants {
@@ -62,5 +62,5 @@ public final class Constants {
     public static final double INTAKE_SPEED = 0.6;
   }
 
-public static final double MAX_SPEED = Units.feetToMeters(16.5);
+public static final double MAX_SPEED = Units.feetToMeters(13);
 }

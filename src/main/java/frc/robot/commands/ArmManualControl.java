@@ -17,12 +17,12 @@ public class ArmManualControl extends Command {
 
     @Override
     public void execute() {
-        arm.manualControl(speedSupplier);
+        arm.setArm(speedSupplier);
     }
     
     @Override
     public void end(boolean interrupted) { 
-        arm.endManualControl(); 
+        arm.stop(); 
     }
 
     
