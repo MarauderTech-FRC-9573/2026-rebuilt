@@ -62,5 +62,5 @@ public final class Constants {
     public static final double INTAKE_SPEED = 0.6;
   }
 
-public static final double MAX_SPEED = Units.feetToMeters(13);
+public static final double MAX_SPEED = Units.feetToMeters(15);
 }
