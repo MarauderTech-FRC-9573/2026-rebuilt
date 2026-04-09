@@ -50,7 +50,7 @@ public final class Constants {
   }
 
   public static class ArmConstants {
-    public static final int ARM_MOTOR_ID = 0;
+    public static final int ARM_MOTOR_ID = 2;
 
     public static final double ARM_P = 0.5;
     public static final double ARM_I = 0;
@@ -62,7 +62,7 @@ public final class Constants {
   }
 
   public static class IntakeConstants {
-    public static final int INTAKE_MOTOR_ID = 0;
+    public static final int INTAKE_MOTOR_ID = 1;
     public static Runnable defaultIntakeSpeed;
   }
 
